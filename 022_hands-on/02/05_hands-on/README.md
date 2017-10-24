@@ -12,7 +12,7 @@ scanner := bufio.NewScanner(conn)
 for scanner.Scan() {
 	ln := scanner.Text()
 	fmt.Println(ln)
-}
+}	
 
 Use this code to READ from an incoming connection and print the incoming text to standard out (the terminal).
 

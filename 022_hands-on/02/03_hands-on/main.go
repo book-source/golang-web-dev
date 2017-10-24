@@ -27,15 +27,17 @@ func main() {
 			ln := scanner.Text()
 			fmt.Println(ln)
 		}
-		fmt.Println("Code got here.")
-
 		defer conn.Close()
 
 		// we never get here
 		// we have an open stream connection
 		// how does the above reader know when it's done?
-		io.WriteString(conn, "I see you connected.")
-
+		fmt.Println("Code got here.")
+		_, err = io.WriteString(conn, "I see you connected.")
+		if err != nil {
+			log.Print(err)
+		}
+		fmt.Println("after write")
 		conn.Close()
 	}
 }

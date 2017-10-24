@@ -11,7 +11,7 @@ func main() {
 	http.HandleFunc("/read", read)
 	http.HandleFunc("/abundance", abundance)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func set(w http.ResponseWriter, req *http.Request) {

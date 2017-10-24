@@ -17,7 +17,7 @@ func main() {
 	http.HandleFunc("/bar", bar)
 	http.HandleFunc("/barred", barred)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8081", nil)
 }
 
 func foo(w http.ResponseWriter, req *http.Request) {

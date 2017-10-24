@@ -2,6 +2,7 @@ package main
 
 import (
 	"io"
+	"log"
 	"net/http"
 )
 
@@ -25,5 +26,8 @@ func main() {
 	mux.Handle("/dog/", d)
 	mux.Handle("/cat", c)
 
-	http.ListenAndServe(":8080", mux)
+	err := http.ListenAndServe(":8081", mux)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

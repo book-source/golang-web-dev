@@ -11,7 +11,7 @@ import (
 func main() {
 	l, err := net.Listen("tcp", ":8081")
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatal(err)
 	}
 	defer l.Close()
 
@@ -25,17 +25,16 @@ func main() {
 		scanner := bufio.NewScanner(conn)
 		for scanner.Scan() {
 			ln := scanner.Text()
+			if ln == "quit" {
+				fmt.Println("THIS IS THE END OF THE HTTP REQUEST HEADERS")
+				break
+			}
 			fmt.Println(ln)
 		}
 		fmt.Println("Code got here.")
-
-		defer conn.Close()
-
-		// we never get here
-		// we have an open stream connection
-		// how does the above reader know when it's done?
 		io.WriteString(conn, "I see you connected.")
 
 		conn.Close()
 	}
+
 }
